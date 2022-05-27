@@ -110,13 +110,14 @@ class ARApp{
         
         const self = this;
         
-        loader.load( '../../assets/hdr/venice_sunset_1k.hdr', ( texture ) => {
+        loader.load( './venice_sunset_1k.hdr', ( texture ) => {
           const envMap = pmremGenerator.fromEquirectangular( texture ).texture;
           pmremGenerator.dispose();
 
           self.scene.environment = envMap;
 
         }, undefined, (err)=>{
+            console.log(err)
             console.error( 'An error occurred setting the environment');
         } );
     }
