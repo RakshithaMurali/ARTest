@@ -6,11 +6,15 @@ function App() {
 
   useEffect(() => {
     console.log("here")
+    document.addEventListener("div", ()=> {
+      console.log("Div")
+    } )
     document.addEventListener("DOMContentLoaded", ()=>{
       const app = new ARApp();
       window.app = app;
       console.log(window.app)
   });
+
   },[]);
 
   return (
