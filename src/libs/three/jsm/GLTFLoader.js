@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /**
  * @author Rich Tibbett / https://github.com/richtr
  * @author mrdoob / http://mrdoob.com/
@@ -1892,7 +1893,8 @@ var GLTFLoader = ( function () {
 		var options = this.options;
 		var textureLoader = this.textureLoader;
 
-		var URL = this.URL || this.webkitURL;
+		// eslint-disable-next-line no-restricted-globals
+		var URL = self.URL || self.webkitURL;
 
 		var textureDef = json.textures[ textureIndex ];
 
