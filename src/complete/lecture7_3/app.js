@@ -1,6 +1,6 @@
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
+import * as THREE from '../../libs/three/three.module';
+import { GLTFLoader } from '../../libs/three/jsm/GLTFLoader';
+import { RGBELoader } from '../../libs/three/jsm/RGBELoader';
 import { ARButton } from '../../libs/ARButton.js';
 import { LoadingBar } from '../../libs/LoadingBar.js';
 import { ControllerGestures } from '../../libs/ControllerGestures.js';
