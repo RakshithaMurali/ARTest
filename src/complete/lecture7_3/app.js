@@ -104,7 +104,7 @@ class ARApp{
     }
     
     setEnvironment(){
-        const loader = new RGBELoader().setDataType( THREE.UnsignedByteType );
+        const loader = new RGBELoader().setDataType( THREE.FloatType );
         const pmremGenerator = new THREE.PMREMGenerator( this.renderer );
         pmremGenerator.compileEquirectangularShader();
         
