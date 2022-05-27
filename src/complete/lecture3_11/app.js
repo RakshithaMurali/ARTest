@@ -54,14 +54,15 @@ class ARApp{
     initScene(){
         this.loadingBar = new LoadingBar();
         
-        this.assetsPath = '../../assets/';
-        const loader = new GLTFLoader().setPath(this.assetsPath);
+        // this.assetsPath = '../../assets/';
+        const loader = new GLTFLoader()
 		const self = this;
 		
 		// Load a GLTF resource
 		loader.load(
+            
 			// resource URL
-			`knight2.glb`,
+			`../../assets/knight2.glb`,
 			// called when the resource is loaded
 			function ( gltf ) {
 				const object = gltf.scene.children[5];
