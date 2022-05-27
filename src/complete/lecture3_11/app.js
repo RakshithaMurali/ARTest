@@ -101,7 +101,7 @@ class ARApp{
 			},
 			// called when loading has errors
 			function ( error ) {
-
+                console.log(error)
 				console.log( 'An error happened' );
 
 			}
