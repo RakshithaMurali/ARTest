@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import { useEffect } from 'react';
+import { ARApp } from './complete/lecture3_11/app';
 
 function App() {
+
+  useEffect(() => {
+    console.log("here")
+    document.addEventListener("DOMContentLoaded", ()=>{
+      const app = new ARApp();
+      window.app = app;
+      console.log(window.app)
+  });
+  },[]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello</h1>
+        
     </div>
   );
 }
