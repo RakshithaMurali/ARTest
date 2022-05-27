@@ -1,11 +1,12 @@
-import * as THREE from '../../libs/three/three.module.js';
+import * as THREE from 'https://cdn.skypack.dev/three@0.129.0/build/three.module.js';
 import { CanvasUI } from '../../libs/CanvasUI.js'
 import { ARButton } from '../../libs/ARButton.js';
 import { LoadingBar } from '../../libs/LoadingBar.js';
 import { Player } from '../../libs/Player.js';
 import { ControllerGestures } from '../../libs/ControllerGestures.js';
-import { OrbitControls } from "../../libs/three/jsm/OrbitControls";
-import {GLTFLoader} from '../../libs/three/jsm/GLTFLoader'
+import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js"
+import {GLTFLoader} from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js';
+
 // import  Stats  from 'three/examples/jsm/libs/stats.module';
 
 class ARApp{
