@@ -4,9 +4,9 @@ import { ARButton } from '../../libs/ARButton.js';
 import { LoadingBar } from '../../libs/LoadingBar.js';
 import { Player } from '../../libs/Player.js';
 import { ControllerGestures } from '../../libs/ControllerGestures.js';
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
-import  Stats  from 'three/examples/jsm/libs/stats.module';
+import { OrbitControls } from "../../libs/three/jsm/OrbitControls";
+import {GLTFLoader} from '../../libs/three/jsm/GLTFLoader'
+// import  Stats  from 'three/examples/jsm/libs/stats.module';
 
 class ARApp{
 	constructor(){
@@ -38,8 +38,8 @@ class ARApp{
         this.controls.target.set(0, 3.5, 0);
         this.controls.update();
         
-        this.stats = new Stats();
-        document.body.appendChild( this.stats.dom );
+        // this.stats = new Stats();
+        // document.body.appendChild( this.stats.dom );
         
         this.origin = new THREE.Vector3();
         this.euler = new THREE.Euler();

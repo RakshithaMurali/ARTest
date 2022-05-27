@@ -23518,7 +23518,7 @@ Object.assign( WebXRController.prototype, {
 
 			if ( window.XRHand ) {
 
-				for ( let i = 0; i <= window.XRHand.LITTLE_PHALANX_TIP; i ++ ) {
+				for ( let i = 0; i <= XRHand.LITTLE_PHALANX_TIP; i ++ ) {
 
 					// The transform of this joint will be updated with the joint pose on each frame
 					let joint = new Group();
@@ -23631,7 +23631,7 @@ Object.assign( WebXRController.prototype, {
 			if ( inputSource.hand ) {
 
 				handPose = true;
-				for ( let i = 0; i <= window.XRHand.LITTLE_PHALANX_TIP; i ++ ) {
+				for ( let i = 0; i <= XRHand.LITTLE_PHALANX_TIP; i ++ ) {
 
 					if ( inputSource.hand[ i ] ) {
 
@@ -23652,8 +23652,8 @@ Object.assign( WebXRController.prototype, {
 						// Custom events
 
 						// Check pinch
-						const indexTip = hand.joints[ window.XRHand.INDEX_PHALANX_TIP ];
-						const thumbTip = hand.joints[ window.XRHand.THUMB_PHALANX_TIP ];
+						const indexTip = hand.joints[ XRHand.INDEX_PHALANX_TIP ];
+						const thumbTip = hand.joints[ XRHand.THUMB_PHALANX_TIP ];
 						const distance = indexTip.position.distanceTo( thumbTip.position );
 
 						const distanceToPinch = 0.02;
