@@ -4,11 +4,12 @@ import { ARApp } from './complete/lecture3_11/app';
 
 function App() {
 
-    document.addEventListener("DOMContentLoaded", ()=>{
+  useEffect(() => {
+    console.log("here")
       const app = new ARApp();
       window.app = app;
       console.log(window.app)
-  });
+  },[]);
 
   return (
     <div className="App">
