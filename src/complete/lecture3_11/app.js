@@ -62,7 +62,7 @@ class ARApp{
 		loader.load(
             
 			// resource URL
-			`../../assets/knight2.glb`,
+			`./knight2.glb`,
 			// called when the resource is loaded
 			function ( gltf ) {
 				const object = gltf.scene.children[5];
