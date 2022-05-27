@@ -211,7 +211,7 @@ class ARApp{
     
 	render( ) {   
         const dt = this.clock.getDelta();
-        this.stats.update();
+        // this.stats.update();
         if ( this.renderer.xr.isPresenting ){
             this.gestures.update();
             this.ui.update();
