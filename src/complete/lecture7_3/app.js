@@ -123,6 +123,7 @@ class ARApp{
     }
     
 	showChair(link){
+        console.log(link)
         this.initAR();
         
 		const loader = new GLTFLoader( )
