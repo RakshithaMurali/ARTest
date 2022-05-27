@@ -1916,11 +1916,14 @@ var GLTFLoader = ( function () {
 		if ( source.bufferView !== undefined ) {
 
 			// Load binary image data from bufferView, if provided.
+			console.log(sourceURI)
 
 			sourceURI = parser.getDependency( 'bufferView', source.bufferView ).then( function ( bufferView ) {
 
 				isObjectURL = true;
 				var blob = new Blob( [ bufferView ], { type: source.mimeType } );
+				console.log(blob)
+				console.log(URL)
 				sourceURI = URL.createObjectURL( blob );
 				return sourceURI;
 
