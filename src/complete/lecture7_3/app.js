@@ -126,7 +126,7 @@ class ARApp{
         console.log(link)
         this.initAR();
         
-		const loader = new GLTFLoader( )
+		const loader = new GLTFLoader()
         const self = this;
         
         this.loadingBar.visible = true;
@@ -137,6 +137,7 @@ class ARApp{
 			link,
 			// called when the resource is loaded
 			function ( gltf ) {
+                console.log(gltf)
 
 				self.scene.add( gltf.scene );
                 self.chair = gltf.scene;
