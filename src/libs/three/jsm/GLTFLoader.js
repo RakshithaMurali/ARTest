@@ -1916,7 +1916,7 @@ var GLTFLoader = ( function () {
 		if ( source.bufferView !== undefined ) {
 
 			// Load binary image data from bufferView, if provided.
-			console.log(sourceURI)
+			console.log(source)
 
 			sourceURI = parser.getDependency( 'bufferView', source.bufferView ).then( function ( bufferView ) {
 
