@@ -5,10 +5,8 @@ import { ARApp } from './complete/lecture7_3/app';
 function App() {
 
   useEffect(() => {
-    console.log("here")
       const app = new ARApp();
       window.app = app;
-      console.log(window.app)
   },[]);
 
   return (

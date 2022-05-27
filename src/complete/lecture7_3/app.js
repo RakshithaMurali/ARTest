@@ -80,21 +80,49 @@ class ARApp{
 
         this.controller = this.renderer.xr.getController( 0 );
         this.controller.addEventListener( 'select', onSelect );
-        
-        // this.gestures = new ControllerGestures( this.renderer );
-
-        // this.gestures.addEventListener( 'rotate', (ev)=>{
-        //     //      sconsole.log( ev ); 
-        //     if (ev.initialise !== undefined){
-        //         self.startQuaternion = self.chair.object.quaternion.clone();
-        //     }else{
-        //         self.chair.object.quaternion.copy( self.startQuaternion );
-        //         self.chair.object.rotateY( ev.theta );
-        //         // self.ui.updateElement('info', `rotate ${ev.theta.toFixed(3)}`  );
-        //     }
-        // });
 
         this.scene.add( this.controller );
+        
+        this.gestures = new ControllerGestures( this.renderer );
+
+        this.gestures.addEventListener( 'rotate', (ev)=>{
+                 console.log( ev ); 
+            if (ev.initialise !== undefined){
+                self.startQuaternion = self.chair.object.quaternion.clone();
+            }else{
+                self.chair.object.quaternion.copy( self.startQuaternion );
+                self.chair.object.rotateY( ev.theta );
+            }
+        });
+
+        this.gestures.addEventListener( 'pan', (ev)=>{
+            //console.log( ev );
+            if (ev.initialise !== undefined){
+                self.startPosition = self.chair.object.position.clone();
+            }else{
+                const pos = self.startPosition.clone().add( ev.delta.multiplyScalar(3) );
+                self.chair.object.position.copy( pos );
+                // self.ui.updateElement('info', `pan x:${ev.delta.x.toFixed(3)}, y:${ev.delta.y.toFixed(3)}, x:${ev.delta.z.toFixed(3)}` );
+            } 
+        });
+        this.gestures.addEventListener( 'swipe', (ev)=>{
+            //console.log( ev );   
+            // self.ui.updateElement('info', `swipe ${ev.direction}` );
+            if (self.chair.object.visible){
+                self.chair.object.visible = false;
+                self.scene.remove( self.chair.object ); 
+            }
+        });
+        this.gestures.addEventListener( 'pinch', (ev)=>{
+            //console.log( ev );  
+            if (ev.initialise !== undefined){
+                self.startScale = self.chair.object.scale.clone();
+            }else{
+                const scale = self.startScale.clone().multiplyScalar(ev.scale);
+                self.chair.object.scale.copy( scale );
+                // self.ui.updateElement('info', `pinch delta:${ev.delta.toFixed(3)} scale:${ev.scale.toFixed(2)}` );
+            }
+        });
     }
 	
     resize(){
@@ -261,10 +289,9 @@ class ARApp{
 
             if ( this.hitTestSource ) this.getHitTestResults( frame );
         }
-        // if ( this.renderer.xr.isPresenting ){
-        //     this.gestures.update();
-        //     // this.ui.update();
-        // }
+        if ( this.renderer.xr.isPresenting ){
+            this.gestures.update();
+        }
         this.renderer.render( this.scene, this.camera );
 
     }
