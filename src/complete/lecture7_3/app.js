@@ -69,17 +69,14 @@ class ARApp{
         this.hitTestSourceRequested = false;
         this.hitTestSource = null;
         
-        function onSelect() {
-            if (self.chair===undefined) return;
+        // function onSelect() {
+        //     if (self.chair===undefined) return;
             
-            if (self.reticle.visible){
-                self.chair.position.setFromMatrixPosition( self.reticle.matrix );
-                self.chair.visible = true;
-                // self.startQuaternion = self.chair.object.quaternion.clone();
-                // console.log(self.startQuaternion);
-                console.log(self.chair.object.quaternion)
-            }
-        }
+        //     if (self.reticle.visible){
+        //         self.chair.position.setFromMatrixPosition( self.reticle.matrix );
+        //         self.chair.visible = true;
+        //     }
+        // }
 
         // function onRotate() {
         //     if(self.chair.visible) {
@@ -87,16 +84,26 @@ class ARApp{
         //     }
         // }
 
-        this.controller = this.renderer.xr.getController( 0 );
-        console.log(this.controller);
+        // this.controller = this.renderer.xr.getController( 0 );
+        // console.log(this.controller);
         // console.log(this.renderer.xr.getController(1))
-        this.controller.addEventListener( 'select', onSelect );
+        // this.controller.addEventListener( 'select', onSelect );
     
         // this.controller.addEventListener('rotate', onRotate())
 
-        this.scene.add( this.controller );
+        // this.scene.add( this.controller );
         
         this.gestures = new ControllerGestures( this.renderer );
+        this.gestures.addEventListener( 'tap', (ev)=>{
+            console.log( 'tap' ); 
+            console.log(ev)
+            // self.ui.updateElement('info', 'tap' );
+            if (!self.chair.object.visible){
+                self.chair.object.visible = true;
+                self.chair.object.position.set( 0, -0.3, -0.5 ).add( ev.position );
+                self.scene.add( self.chair.object ); 
+            }
+        });
 
         this.gestures.addEventListener( 'rotate', (ev)=>{
                 //  console.log( ev ); 
@@ -137,7 +144,7 @@ class ARApp{
             }
         });
 
-        // this.renderer.setAnimationLoop( this.render.bind(this) )
+        this.renderer.setAnimationLoop( this.render.bind(this) )
     }
 	
     resize(){
@@ -189,7 +196,7 @@ class ARApp{
                 
                 self.loadingBar.visible = false;
                 
-                self.renderer.setAnimationLoop( self.render.bind(self) );
+                // self.renderer.setAnimationLoop( self.render.bind(self) );
 			},
 			// called while loading is progressing
 			function ( xhr ) {
@@ -305,6 +312,7 @@ class ARApp{
             if ( this.hitTestSource ) this.getHitTestResults( frame );
         }
         if ( this.renderer.xr.isPresenting ){
+            console.log("gestures updating")
             this.gestures.update();
         }
         this.renderer.render( this.scene, this.camera );
