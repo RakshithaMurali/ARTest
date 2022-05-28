@@ -79,14 +79,17 @@ class ARApp{
         }
 
         this.controller = this.renderer.xr.getController( 0 );
+        console.log(this.controller);
+        console.log(this.renderer.xr)
         this.controller.addEventListener( 'select', onSelect );
+        // this.controller.addEventListener('rotate', )
 
         this.scene.add( this.controller );
         
         this.gestures = new ControllerGestures( this.renderer );
 
         this.gestures.addEventListener( 'rotate', (ev)=>{
-                 console.log( ev ); 
+                //  console.log( ev ); 
             if (ev.initialise !== undefined){
                 self.startQuaternion = self.chair.object.quaternion.clone();
             }else{
@@ -123,6 +126,8 @@ class ARApp{
                 // self.ui.updateElement('info', `pinch delta:${ev.delta.toFixed(3)} scale:${ev.scale.toFixed(2)}` );
             }
         });
+
+        // this.renderer.setAnimationLoop( this.render.bind(this) )
     }
 	
     resize(){
