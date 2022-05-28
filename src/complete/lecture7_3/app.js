@@ -202,7 +202,7 @@ class ARApp{
                 
                 self.loadingBar.visible = false;
 
-                const scale = 0.003;
+                const scale = 0.5;
 				self.chair.scale.set(scale, scale, scale); 
                 
                 // self.renderer.setAnimationLoop( self.render.bind(self) );
