@@ -80,7 +80,7 @@ class ARApp{
 
         this.controller = this.renderer.xr.getController( 0 );
         console.log(this.controller);
-        console.log(this.renderer.xr)
+        console.log(this.renderer.xr.getController(1))
         this.controller.addEventListener( 'select', onSelect );
         // this.controller.addEventListener('rotate', )
 
