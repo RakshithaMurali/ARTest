@@ -102,6 +102,7 @@ class ARApp{
             if (!self.chair.visible){
                 self.chair.visible = true;
                 self.chair.position.set( 0, -0.3, -0.5 ).add( ev.position );
+                console.log(self.chair.position)
                 self.scene.add( self.chair); 
             }
         });
