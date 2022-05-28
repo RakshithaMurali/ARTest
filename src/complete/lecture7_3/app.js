@@ -94,13 +94,14 @@ class ARApp{
         // this.scene.add( this.controller );
         
         this.gestures = new ControllerGestures( this.renderer );
+        console.log(this.gestures)
         this.gestures.addEventListener( 'tap', (ev)=>{
             console.log( 'tap' ); 
             console.log(ev)
             // self.ui.updateElement('info', 'tap' );
-            if (!self.chair.object.visible){
-                self.chair.object.visible = true;
-                self.chair.object.position.set( 0, -0.3, -0.5 ).add( ev.position );
+            if (!self.chair.visible){
+                self.chair.visible = true;
+                self.chair.position.set( 0, -0.3, -0.5 ).add( ev.position );
                 self.scene.add( self.chair.object ); 
             }
         });
@@ -312,7 +313,7 @@ class ARApp{
             if ( this.hitTestSource ) this.getHitTestResults( frame );
         }
         if ( this.renderer.xr.isPresenting ){
-            console.log("gestures updating")
+            // console.log("gestures updating")
             this.gestures.update();
         }
         this.renderer.render( this.scene, this.camera );
