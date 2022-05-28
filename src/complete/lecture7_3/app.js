@@ -114,38 +114,38 @@ class ARApp{
         this.gestures.addEventListener( 'rotate', (ev)=>{
                 //  console.log( ev ); 
             if (ev.initialise !== undefined){
-                self.startQuaternion = self.chair.object.quaternion.clone();
+                self.startQuaternion = self.chair.quaternion.clone();
             }else{
-                self.chair.object.quaternion.copy( self.startQuaternion );
-                self.chair.object.rotateY( ev.theta );
+                self.chair.quaternion.copy( self.startQuaternion );
+                self.chair.rotateY( ev.theta );
             }
         });
 
         this.gestures.addEventListener( 'pan', (ev)=>{
             //console.log( ev );
             if (ev.initialise !== undefined){
-                self.startPosition = self.chair.object.position.clone();
+                self.startPosition = self.chair.position.clone();
             }else{
                 const pos = self.startPosition.clone().add( ev.delta.multiplyScalar(3) );
-                self.chair.object.position.copy( pos );
+                self.chair.position.copy( pos );
                 // self.ui.updateElement('info', `pan x:${ev.delta.x.toFixed(3)}, y:${ev.delta.y.toFixed(3)}, x:${ev.delta.z.toFixed(3)}` );
             } 
         });
         this.gestures.addEventListener( 'swipe', (ev)=>{
             //console.log( ev );   
             // self.ui.updateElement('info', `swipe ${ev.direction}` );
-            if (self.chair.object.visible){
-                self.chair.object.visible = false;
-                self.scene.remove( self.chair.object ); 
+            if (self.chair.visible){
+                self.chair.visible = false;
+                self.scene.remove( self.chair ); 
             }
         });
         this.gestures.addEventListener( 'pinch', (ev)=>{
             //console.log( ev );  
             if (ev.initialise !== undefined){
-                self.startScale = self.chair.object.scale.clone();
+                self.startScale = self.chair.scale.clone();
             }else{
                 const scale = self.startScale.clone().multiplyScalar(ev.scale);
-                self.chair.object.scale.copy( scale );
+                self.chair.scale.copy( scale );
                 // self.ui.updateElement('info', `pinch delta:${ev.delta.toFixed(3)} scale:${ev.scale.toFixed(2)}` );
             }
         });
@@ -202,8 +202,8 @@ class ARApp{
                 
                 self.loadingBar.visible = false;
 
-                const scale = 0.5;
-				self.chair.scale.set(scale, scale, scale); 
+                // const scale = 0.5;
+				// self.chair.scale.set(scale, scale, scale); 
                 
                 // self.renderer.setAnimationLoop( self.render.bind(self) );
 			},
