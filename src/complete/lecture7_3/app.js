@@ -75,14 +75,24 @@ class ARApp{
             if (self.reticle.visible){
                 self.chair.position.setFromMatrixPosition( self.reticle.matrix );
                 self.chair.visible = true;
+                self.startQuaternion = self.chair.object.quaternion.clone();
+                console.log(self.startQuaternion);
+                console.log(self.chair.object.quaternion)
             }
         }
 
+        // function onRotate() {
+        //     if(self.chair.visible) {
+
+        //     }
+        // }
+
         this.controller = this.renderer.xr.getController( 0 );
         console.log(this.controller);
-        console.log(this.renderer.xr.getController(1))
+        // console.log(this.renderer.xr.getController(1))
         this.controller.addEventListener( 'select', onSelect );
-        // this.controller.addEventListener('rotate', )
+    
+        // this.controller.addEventListener('rotate', onRotate())
 
         this.scene.add( this.controller );
         
