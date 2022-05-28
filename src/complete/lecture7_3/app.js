@@ -105,6 +105,10 @@ class ARApp{
                 console.log(self.chair.position)
                 self.scene.add( self.chair); 
             }
+            if(self.chair.visible) {
+                self.chair.position.setFromMatrixPosition( self.reticle.matrix );
+                self.chair.visible = true;
+            }
         });
 
         this.gestures.addEventListener( 'rotate', (ev)=>{
@@ -197,6 +201,9 @@ class ARApp{
                 self.chair.visible = false; 
                 
                 self.loadingBar.visible = false;
+
+                const scale = 0.003;
+				self.chair.scale.set(scale, scale, scale); 
                 
                 // self.renderer.setAnimationLoop( self.render.bind(self) );
 			},
