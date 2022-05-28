@@ -75,8 +75,8 @@ class ARApp{
             if (self.reticle.visible){
                 self.chair.position.setFromMatrixPosition( self.reticle.matrix );
                 self.chair.visible = true;
-                self.startQuaternion = self.chair.object.quaternion.clone();
-                console.log(self.startQuaternion);
+                // self.startQuaternion = self.chair.object.quaternion.clone();
+                // console.log(self.startQuaternion);
                 console.log(self.chair.object.quaternion)
             }
         }
