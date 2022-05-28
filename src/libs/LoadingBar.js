@@ -32,7 +32,7 @@ class LoadingBar{
 		
 		function onprogress(delta){
 			const progress = delta*100;
-			let loader;
+			// eslint-disable-next-line no-undef
 			loader.progressBar.style.width = `${progress}%`;
 		}
 	}
