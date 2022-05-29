@@ -23947,14 +23947,14 @@ function WebXRManager( renderer, gl ) {
 				framebufferScaleFactor: framebufferScaleFactor
 			};
 
-			// eslint-disable-next-line no-undef
+			const { XRWebGLLayer } = window;
+			
 			const baseLayer = new XRWebGLLayer( session, gl, layerInit );
 
 			session.updateRenderState( { baseLayer: baseLayer } );
 
 			session.requestReferenceSpace( referenceSpaceType ).then( onRequestReferenceSpace );
 
-			//
 
 			session.addEventListener( 'inputsourceschange', updateInputSources );
 
