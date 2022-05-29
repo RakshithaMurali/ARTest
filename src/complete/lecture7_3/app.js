@@ -246,6 +246,7 @@ class ARApp{
         }
 
         function onSessionEnded( ) {
+            console.log(onSessionEnded)
 
             currentSession.removeEventListener( 'end', onSessionEnded );
 
