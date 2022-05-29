@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <h1>Hello</h1>
-       <button onClick={() => window.app.showChair(`./untitled.glb`)}>AR Button</button> 
+       <button onClick={() => window.app.showChair(`https://firebasestorage.googleapis.com/v0/b/arrange-eafdc.appspot.com/o/2QyeMCcfSo%2Fscene.glb?alt=media&token=e41c5666-083a-4faf-b1ae-7241223c0875`)}>AR Button</button> 
     </div>
   );
 }
