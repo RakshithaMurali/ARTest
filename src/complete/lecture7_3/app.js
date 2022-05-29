@@ -101,7 +101,8 @@ class ARApp{
             // self.ui.updateElement('info', 'tap' );
             if (!self.chair.visible){
                 self.chair.visible = true;
-                self.chair.position.set( 0, -0.3, -0.5 ).add( ev.position );
+                // self.chair.position.set( 0, -0.3, -0.5 ).add( ev.position );
+                self.chair.position.setFromMatrixPosition( self.reticle.matrix );
                 console.log(self.chair.position)
                 self.scene.add( self.chair); 
             }
