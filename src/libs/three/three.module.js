@@ -23960,10 +23960,10 @@ function WebXRManager( renderer, gl ) {
 
 			// session.addEventListener( 'inputsourceschange', updateInputSources );
 			
-			await session.requestReferenceSpace( referenceSpaceType );
+			await session.requestReferenceSpace( referenceSpaceType ).then(onRequestReferenceSpace);
 
-			onRequestReferenceSpace();
-			
+			// onRequestReferenceSpace();
+
 			session.addEventListener( 'inputsourceschange', updateInputSources );
 
 		}
