@@ -23953,7 +23953,7 @@ function WebXRManager( renderer, gl ) {
 			// eslint-disable-next-line no-undef
 			const baseLayer = new XRWebGLLayer( session, gl, layerInit );
 
-			// session.updateRenderState( { baseLayer: baseLayer } );
+			session.updateRenderState( { baseLayer: baseLayer } );
 
 			// session.requestReferenceSpace( referenceSpaceType ).then( onRequestReferenceSpace );
 
