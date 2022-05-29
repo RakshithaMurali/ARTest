@@ -236,6 +236,7 @@ class ARApp{
         
         function onSessionStarted( session ) {
 
+            console.log(session)
             session.addEventListener( 'end', onSessionEnded );
 
             self.renderer.xr.setReferenceSpaceType( 'local' );
@@ -247,6 +248,7 @@ class ARApp{
 
         function onSessionEnded( ) {
             console.log(onSessionEnded)
+            console.log(currentSession)
 
             currentSession.removeEventListener( 'end', onSessionEnded );
 
