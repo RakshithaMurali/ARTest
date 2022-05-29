@@ -23917,7 +23917,7 @@ function WebXRManager( renderer, gl ) {
 
 	};
 
-	this.setSession = function ( value ) {
+	this.setSession = async function createSession ( value ) {
 
 		session = value;
 
@@ -23947,16 +23947,23 @@ function WebXRManager( renderer, gl ) {
 				framebufferScaleFactor: framebufferScaleFactor
 			};
 
-			const { XRWebGLLayer } = window;
+			// const { XRWebGLLayer } = window;
+
 			
+			// eslint-disable-next-line no-undef
 			const baseLayer = new XRWebGLLayer( session, gl, layerInit );
 
-			session.updateRenderState( { baseLayer: baseLayer } );
+			// session.updateRenderState( { baseLayer: baseLayer } );
 
-			session.requestReferenceSpace( referenceSpaceType ).then( onRequestReferenceSpace );
+			// session.requestReferenceSpace( referenceSpaceType ).then( onRequestReferenceSpace );
 
 
+			// session.addEventListener( 'inputsourceschange', updateInputSources );
 			session.addEventListener( 'inputsourceschange', updateInputSources );
+
+			await session.requestReferenceSpace( referenceSpaceType );
+
+			onRequestReferenceSpace();
 
 		}
 
