@@ -112,7 +112,8 @@ class ARApp{
         });
 
         this.gestures.addEventListener( 'rotate', (ev)=>{
-                //  console.log( ev ); 
+            console.log("rotate");
+                 console.log( ev ); 
             if (ev.initialise !== undefined){
                 self.startQuaternion = self.chair.quaternion.clone();
             }else{
@@ -122,7 +123,8 @@ class ARApp{
         });
 
         this.gestures.addEventListener( 'pan', (ev)=>{
-            //console.log( ev );
+            console.log("zoom in")
+            console.log( ev );
             if (ev.initialise !== undefined){
                 self.startPosition = self.chair.position.clone();
             }else{
@@ -132,7 +134,8 @@ class ARApp{
             } 
         });
         this.gestures.addEventListener( 'swipe', (ev)=>{
-            //console.log( ev );   
+            console.log("swipe")
+            console.log( ev );   
             // self.ui.updateElement('info', `swipe ${ev.direction}` );
             if (self.chair.visible){
                 self.chair.visible = false;
@@ -140,7 +143,8 @@ class ARApp{
             }
         });
         this.gestures.addEventListener( 'pinch', (ev)=>{
-            //console.log( ev );  
+            console.log("zoom out")
+            console.log( ev );  
             if (ev.initialise !== undefined){
                 self.startScale = self.chair.scale.clone();
             }else{
