@@ -26,8 +26,9 @@ class ARApp{
 		this.scene.add(ambient);
         const spotLight = new THREE.DirectionalLight();
         spotLight.castShadow = true;
-        this.scene.add(spotLight);
         spotLight.position.set(0, 8, 0);
+        this.scene.add(spotLight);
+        
 
         // const planeShadow = new THREE.Mesh(new THREE.PlaneGeometry(3, 3), new THREE.MeshPhongMaterial()); //Material they have to be MeshPhongMaterial
 
@@ -37,6 +38,17 @@ class ARApp{
         // planeShadow.receiveShadow = true;
         // planeShadow.position.set(0, 0, 0);
         // this.scene.add(planeShadow);
+
+        const geometry = new THREE.PlaneGeometry(40, 40);
+        geometry.rotateX(-Math.PI / 2);
+        const material = new THREE.ShadowMaterial();
+        material.opacity = 0.5;
+
+        const plane = new THREE.Mesh(geometry, material);
+        plane.receiveShadow = true;
+        plane.visible = true;
+        plane.matrixAutoUpdate = false;
+        this.scene.add(plane);
                     
 		this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true } );
 		this.renderer.setPixelRatio( window.devicePixelRatio );
@@ -104,8 +116,6 @@ class ARApp{
         // console.log(this.controller);
         // console.log(this.renderer.xr.getController(1))
         // this.controller.addEventListener( 'select', onSelect );
-    
-        // this.controller.addEventListener('rotate', onRotate())
 
         // this.scene.add( this.controller );
         
@@ -352,11 +362,14 @@ class ARApp{
             if ( this.hitTestSourceRequested === false ) this.requestHitTestSource( )
 
             if ( this.hitTestSource ) this.getHitTestResults( frame );
+
+            if ( this.renderer.xr.isPresenting ){
+                // console.log("gestures updating")
+                this.gestures.update();
+            }
         }
-        if ( this.renderer.xr.isPresenting ){
-            // console.log("gestures updating")
-            this.gestures.update();
-        }
+        
+
         this.renderer.render( this.scene, this.camera );
 
     }
