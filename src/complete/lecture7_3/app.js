@@ -103,7 +103,6 @@ class ARApp{
                 self.chair.visible = true;
                 // self.chair.position.set( 0, -0.3, -0.5 ).add( ev.position );
                 self.chair.position.setFromMatrixPosition( self.reticle.matrix );
-                console.log(self.chair.position)
                 self.scene.add( self.chair); 
             }
             if(self.chair.visible) {
@@ -200,6 +199,12 @@ class ARApp{
 			function ( gltf ) {
                 console.log(gltf)
 
+                gltf.scene.traverse( function( node ) {
+
+                    if ( node.isMesh ) { node.castShadow = true; }
+            
+                } );
+
 				self.scene.add( gltf.scene );
                 self.chair = gltf.scene;
         
@@ -247,9 +252,7 @@ class ARApp{
         }
 
         function onSessionEnded( ) {
-            console.log(onSessionEnded)
-            console.log(currentSession)
-
+            console.log("Session Ending....")
             currentSession.removeEventListener( 'end', onSessionEnded );
 
             currentSession = null;
