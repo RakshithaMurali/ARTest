@@ -204,7 +204,9 @@ class ARApp{
 
                     if ( node.isMesh ) { 
                         console.log("Yes here is a shadow")
-                        node.castShadow = true; }
+                        node.castShadow = true; 
+                        node.receiveShadow = true
+                    }
             
                 } );
 
