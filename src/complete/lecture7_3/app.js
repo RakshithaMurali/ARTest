@@ -279,6 +279,7 @@ class ARApp{
             }
             
             self.renderer.setAnimationLoop( null );
+            window.location.reload()
 
         }
 
