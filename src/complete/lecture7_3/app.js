@@ -29,14 +29,14 @@ class ARApp{
         this.scene.add(spotLight);
         spotLight.position.set(0, 8, 0);
 
-        const planeShadow = new THREE.Mesh(new THREE.PlaneGeometry(3, 3), new THREE.MeshPhongMaterial()); //Material they have to be MeshPhongMaterial
+        // const planeShadow = new THREE.Mesh(new THREE.PlaneGeometry(3, 3), new THREE.MeshPhongMaterial()); //Material they have to be MeshPhongMaterial
 
-        planeShadow.name = "FloorShadow";
-        planeShadow.renderOrder = -2;
-        planeShadow.lookAt(new THREE.Vector3(0, 1, 0));
-        planeShadow.receiveShadow = true;
-        planeShadow.position.set(0, 0, 0);
-        this.scene.add(planeShadow);
+        // planeShadow.name = "FloorShadow";
+        // planeShadow.renderOrder = -2;
+        // planeShadow.lookAt(new THREE.Vector3(0, 1, 0));
+        // planeShadow.receiveShadow = true;
+        // planeShadow.position.set(0, 0, 0);
+        // this.scene.add(planeShadow);
                     
 		this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true } );
 		this.renderer.setPixelRatio( window.devicePixelRatio );
@@ -221,7 +221,7 @@ class ARApp{
                     if ( node.isMesh ) { 
                         console.log("Yes here is a shadow")
                         node.castShadow = true; 
-                        // node.receiveShadow = true
+                        node.receiveShadow = true
                     }
             
                 } );
