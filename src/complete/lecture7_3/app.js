@@ -200,8 +200,11 @@ class ARApp{
                 console.log(gltf)
 
                 gltf.scene.traverse( function( node ) {
+                    console.log("Shadow casting...")
 
-                    if ( node.isMesh ) { node.castShadow = true; }
+                    if ( node.isMesh ) { 
+                        console.log("Yes here is a shadow")
+                        node.castShadow = true; }
             
                 } );
 
