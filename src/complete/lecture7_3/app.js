@@ -24,21 +24,26 @@ class ARApp{
 		const ambient = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1);
         ambient.position.set( 0.5, 1, 0.25 );
 		this.scene.add(ambient);
+        const spotLight = new THREE.DirectionalLight();
+        spotLight.castShadow = true;
+        this.scene.add(spotLight);
+        spotLight.position.set(0, 8, 0);
 
-        const light = new THREE.DirectionalLight( 0xffffff );
-        light.position.set( 0, 10, - 10 );
-        light.castShadow = true;
-        light.shadow.camera.top = 2;
-        light.shadow.camera.bottom = - 2;
-        light.shadow.camera.left = - 2;
-        light.shadow.camera.right = 2;
-        light.shadow.camera.near = 0.1;
-        light.shadow.camera.far = 10;
-        this.scene.add( light );
+        const planeShadow = new THREE.Mesh(new THREE.PlaneGeometry(3, 3), new THREE.MeshPhongMaterial()); //Material they have to be MeshPhongMaterial
+
+        planeShadow.name = "FloorShadow";
+        planeShadow.renderOrder = -2;
+        planeShadow.lookAt(new THREE.Vector3(0, 1, 0));
+        planeShadow.receiveShadow = true;
+        planeShadow.position.set(0, 0, 0);
+        this.scene.add(planeShadow);
                     
 		this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true } );
 		this.renderer.setPixelRatio( window.devicePixelRatio );
 		this.renderer.setSize( window.innerWidth, window.innerHeight );
+
+        this.renderer.shadowMap.enabled = true;
+        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
         this.renderer.outputEncoding = THREE.sRGBEncoding;
 		container.appendChild( this.renderer.domElement );
         this.setEnvironment();
@@ -216,7 +221,7 @@ class ARApp{
                     if ( node.isMesh ) { 
                         console.log("Yes here is a shadow")
                         node.castShadow = true; 
-                        node.receiveShadow = true
+                        // node.receiveShadow = true
                     }
             
                 } );
